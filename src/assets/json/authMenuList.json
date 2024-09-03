@@ -2,6 +2,36 @@
   "code": 200,
   "data": [
     {
+      "path": "/community",
+      "name": "community",
+      "redirect": "/community/index",
+      "meta": {
+        "icon": "Avatar",
+        "title": "社区",
+        "isLink": "",
+        "isHide": false,
+        "isFull": false,
+        "isAffix": true,
+        "isKeepAlive": true
+      },
+      "children": [
+        {
+          "path": "/community/index",
+          "name": "communityIndex",
+          "component": "/community/index",
+          "meta": {
+            "icon": "User",
+            "title": "社区成员",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": true,
+            "isKeepAlive": true
+          }
+        }
+      ]
+    },
+    {
       "path": "/home/index",
       "name": "home",
       "component": "/home/index",
