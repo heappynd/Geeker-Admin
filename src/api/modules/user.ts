@@ -62,6 +62,10 @@ export const getUserGender = () => {
 
 // 获取用户部门列表
 export const getUserDepartment = () => {
+  http.get<User.ResDepartment[]>(PORT1 + `/user/department`, {}, { cancel: false }).then(res => {
+    console.log(res);
+  });
+
   return http.get<User.ResDepartment[]>(PORT1 + `/user/department`, {}, { cancel: false });
 };
 

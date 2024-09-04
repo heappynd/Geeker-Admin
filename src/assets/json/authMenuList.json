@@ -28,6 +28,34 @@
             "isAffix": true,
             "isKeepAlive": true
           }
+        },
+        {
+          "path": "/community/index2",
+          "name": "communityIndex2",
+          "component": "/community/index2",
+          "meta": {
+            "icon": "User",
+            "title": "社区成员2",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": true,
+            "isKeepAlive": true
+          }
+        },
+        {
+          "path": "/community/index3",
+          "name": "communityIndex3",
+          "component": "/community/index3",
+          "meta": {
+            "icon": "User",
+            "title": "社区成员3",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": true,
+            "isKeepAlive": true
+          }
         }
       ]
     },

@@ -1,23 +1,85 @@
 <template>
-  <div class="table-box">
-    <ProTable
-      ref="proTableRef"
-      :columns="columns"
-      :request-api="requestApi"
-      request-auto
+  <div style="display: flex">
+    <TreeFilter
+      style="flex: 1"
+      :request-api="getTreeData"
       title="标题"
-      :tool-button="['refresh', 'search']"
-      row-key="name"
-      :data-callback="dataCallback"
-    />
+      :multiple="false"
+      default-value="1-1"
+      @change="changeTreeFilter"
+    ></TreeFilter>
+
+    <div style="flex: 3" class="table-box">
+      <ProTable
+        ref="proTableRef"
+        :columns="columns"
+        :request-api="requestApi"
+        request-auto
+        title="标题"
+        :tool-button="['refresh', 'search']"
+        row-key="name"
+        :data-callback="dataCallback"
+      />
+    </div>
   </div>
 </template>
 
 <script lang="tsx" setup>
 import { ResPage, ResultData } from "@/api/interface";
 import ProTable from "@/components/ProTable/index.vue";
+import TreeFilter from "@/components/TreeFilter/index.vue";
 import { ColumnProps, ProTableInstance } from "@/components/ProTable/interface";
 import { ref } from "vue";
+
+// tree filter
+
+const treeData = [
+  {
+    id: "1",
+    label: "一级",
+    children: [
+      {
+        id: "1-1",
+        label: "一级1",
+        children: []
+      },
+      {
+        id: "1-2",
+        label: "一级2",
+        children: []
+      }
+    ]
+  },
+  {
+    id: "2",
+    label: "二级",
+    children: [
+      {
+        id: "2-1",
+        label: "二级1",
+        children: []
+      }
+    ]
+  }
+];
+
+const changeTreeFilter = (val: string) => {
+  console.log(val);
+};
+
+const getTreeData = () => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({
+        code: "200",
+        msg: "成功",
+        data: treeData
+      });
+    }, 1000);
+  });
+};
+
+// table
 
 type User = {
   name: string;
@@ -66,7 +128,6 @@ const columns: ColumnProps<User>[] = [
  */
 type MyRes = ResultData<ResPage<User>>;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const requestApi = (params: any) => {
   console.log(params);
 
